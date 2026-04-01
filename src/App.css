@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap");
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Estrelas animadas */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 35%),
+              radial-gradient(circle at 80% 10%, rgba(170, 200, 255, 0.08), transparent 30%),
+              radial-gradient(circle at 50% 90%, rgba(120, 150, 255, 0.05), transparent 40%);
+}
+
+.estrela {
+  position: absolute;
+  animation: brilhar 2.8s ease-in-out infinite alternate, drift 12s ease-in-out infinite;
+}
+
+@keyframes brilhar {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 6px -8px;
+  }
+}
+
+/* Lua */
+.lua {
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  width: 92px;
+  height: 92px;
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, #f6f7fb 52%, #dde2ee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 32px rgba(220, 230, 255, 0.55), 0 0 78px rgba(165, 185, 255, 0.25);
+  animation: flutuarNoite 8s ease-in-out infinite;
+  z-index: 1;
+}
+
+.lua::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 230, 255, 0.25), transparent 70%);
+  animation: haloLunar 5s ease-in-out infinite;
+}
+
+.lua-sombra {
+  position: absolute;
+  top: 14%;
+  left: 14%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle at 40% 35%, rgba(190, 200, 225, 0.28), transparent 70%);
+  border-radius: 50%;
+}
+
+.lua-crateras {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 26% 32%, rgba(170, 178, 198, 0.55) 0 6px, rgba(170, 178, 198, 0.22) 6px 9px, transparent 10px),
+    radial-gradient(circle at 64% 30%, rgba(165, 174, 197, 0.5) 0 4px, rgba(165, 174, 197, 0.2) 4px 7px, transparent 8px),
+    radial-gradient(circle at 52% 58%, rgba(172, 181, 202, 0.52) 0 5px, rgba(172, 181, 202, 0.2) 5px 8px, transparent 9px),
+    radial-gradient(circle at 34% 66%, rgba(162, 172, 194, 0.48) 0 3px, rgba(162, 172, 194, 0.18) 3px 6px, transparent 7px);
+}
+
+/* Sol */
+.sol {
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  width: 102px;
+  height: 102px;
+  background: radial-gradient(circle at 35% 35%, #fff4a7 0%, #ffd65a 45%, #f79f1f 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(255, 200, 100, 0.7), 0 0 100px rgba(255, 160, 80, 0.35);
+  animation: girar 30s linear infinite;
+  z-index: 1;
+}
+
+.sol::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 226, 122, 0.35), transparent 68%);
+  animation: pulsarSol 4.5s ease-in-out infinite;
+}
+
+.sol-raio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 236, 150, 0.95), transparent);
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(calc(45deg * var(--i, 0)));
+  filter: blur(0.2px);
+}
+
+.sol-raio:nth-child(1) { --i: 0; transform: translate(-50%, -50%) rotate(0deg); }
+.sol-raio:nth-child(2) { --i: 1; transform: translate(-50%, -50%) rotate(45deg); }
+.sol-raio:nth-child(3) { --i: 2; transform: translate(-50%, -50%) rotate(90deg); }
+.sol-raio:nth-child(4) { --i: 3; transform: translate(-50%, -50%) rotate(135deg); }
+.sol-raio:nth-child(5) { --i: 4; transform: translate(-50%, -50%) rotate(180deg); }
+.sol-raio:nth-child(6) { --i: 5; transform: translate(-50%, -50%) rotate(225deg); }
+.sol-raio:nth-child(7) { --i: 6; transform: translate(-50%, -50%) rotate(270deg); }
+.sol-raio:nth-child(8) { --i: 7; transform: translate(-50%, -50%) rotate(315deg); }
+
+/* Nuvens */
+.nuvem {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 100px;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+.nuvem::before,
+.nuvem::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.nuvem1 {
+  width: 150px;
+  height: 80px;
+  top: 14%;
+  left: -180px;
+  animation: atravessar 28s linear infinite;
+}
+
+.nuvem1::before {
+  width: 85px;
+  height: 85px;
+  top: -26px;
+  left: 22px;
+}
+
+.nuvem1::after {
+  width: 65px;
+  height: 65px;
+  top: -18px;
+  right: 20px;
+}
+
+.nuvem2 {
+  width: 200px;
+  height: 100px;
+  top: 24%;
+  left: -260px;
+  animation: atravessar 34s linear infinite;
+  animation-delay: -8s;
+}
+
+.nuvem2::before {
+  width: 100px;
+  height: 100px;
+  top: -34px;
+  left: 26px;
+}
+
+.nuvem2::after {
+  width: 82px;
+  height: 82px;
+  top: -20px;
+  right: 24px;
+}
+
+.nuvem3 {
+  width: 120px;
+  height: 60px;
+  bottom: 18%;
+  left: -180px;
+  animation: atravessar 24s linear infinite;
+  animation-delay: -14s;
+}
+
+.nuvem3::before {
+  width: 62px;
+  height: 62px;
+  top: -18px;
+  left: 16px;
+}
+
+.nuvem3::after {
+  width: 50px;
+  height: 50px;
+  top: -10px;
+  right: 14px;
+}
+
+@keyframes atravessar {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(55vw) translateY(-8px);
+  }
+  100% {
+    transform: translateX(115vw) translateY(2px);
+  }
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flutuarNoite {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes haloLunar {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes pulsarSol {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(1.06);
+  }
+}
+
+/* Brilho das estrelas */
+.brilho-estrelas {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent);
+  pointer-events: none;
+  animation: pulsar 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulsar {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sol, .lua {
+    width: 60px;
+    height: 60px;
+    top: 4%;
+    right: 4%;
+  }
+  
+  .nuvem1,
+  .nuvem2,
+  .nuvem3 {
+    transform: scale(0.7);
+  }
+  
+  .glassStyle {
+    padding: 20px;
+    margin: 20px;
+  }
+}
