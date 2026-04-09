@@ -317,7 +317,7 @@ function App() {
       <div style={{ 
         position: "absolute", 
         bottom: "20px", 
-        fontSize: "0.7rem", 
+        fontSize: "0.9rem", 
         opacity: 0.5,
         zIndex: 2,
       }}>
